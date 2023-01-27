@@ -18,6 +18,7 @@ conda activate sleap_motile
 ```
 
 3) install motile. Note: this example was tested with an older version of motile which has since been updated. For now just use old version:
+**Update - see bottom of readme for updated example, will update readme later**
 
 ```
 git clone https://github.com/funkelab/motile.git
