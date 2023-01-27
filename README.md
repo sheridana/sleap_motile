@@ -99,6 +99,11 @@ jupyter-lab
 
 ## Integrating with SLEAP
 
+The `test_data` includes an example SLEAP file and movie. The movie consists of two flies in an arena, and the .slp file includes the ground truth [labels](https://sleap.ai/api/sleap.io.dataset.html?highlight=labels#sleap.io.dataset.Labels) (instances with poses defined by nodes and edges). The first three frames look like this:
+
+![](https://github.com/sheridana/sleap_motile/blob/main/flies.png)
+
+In the example, the `get_nodes` function will parse the anchor nodes in the sleap file for a given amount of frames and return a list of dicts in the same format to the prior examples. E.g `nodes = get_nodes(labels, num_frames=3)` will return: 
 
 | id | t | x          | y          | score |
 |----|---|------------|------------|-------|
@@ -109,6 +114,7 @@ jupyter-lab
 | 4  | 2 | 448.919983 | 258.000000 | 1.0   |
 | 5  | 2 | 535.239990 | 238.759995 | 1.0   |
 
+We then just take the euclidean distance between nodes across consecutive frames, forward in time to get our edges and prediction_distances. E.g `get_edges(nodes)` will then give us this:
 
 | source | target | prediction_distance |
 |:------:|:------:|:-------------------:|
@@ -120,5 +126,7 @@ jupyter-lab
 |    2   |    5   |     7824.406937     |
 |    3   |    4   |     7910.028891     |
 |    3   |    5   |       0.519978      |
+
+Passing these nodes and edges to motile as before (`test_solver_motile(nodes, edges)`) should then select the same edges:
 
 `Selected edges: [(0, 2), (1, 3), (2, 4), (3, 5)]`
