@@ -130,3 +130,12 @@ We then just take the euclidean distance between nodes across consecutive frames
 Passing these nodes and edges to motile as before (`test_solver_motile(nodes, edges)`) should then select the same edges:
 
 `Selected edges: [(0, 2), (1, 3), (2, 4), (3, 5)]`
+
+Selecting nodes over more frames should work the same.
+
+Todos:
+
+* Add as example to motile docs when ready
+* Test integration with transformer association matrix
+* Extend to poses
+* Add more animal / pose specific costs and constraints
