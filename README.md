@@ -139,3 +139,19 @@ Todos:
 * Test integration with transformer association matrix
 * Extend to poses
 * Add more animal / pose specific costs and constraints
+
+---
+
+# Updated example
+
+* Added an updated example (`example_use_updated.ipynb`) which uses the most recent changes to `motile`.
+* So installing motile can simple be changed to:
+
+```
+pip install git+https://github.com/funkelab/motile.git
+```
+
+* Changes `prediction_distance` to just `distance` since there is no predicted movement in this example
+* Replaces `EdgeSelection` cost with `EdgeDistance` cost
+* Adds `Split` cost
+* Now simply setting `max_children=2` won't select node 6 unless the split_cost is also lowered
